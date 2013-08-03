@@ -53,9 +53,6 @@
                 <converter:InvertBoolConverter x:Key="InvertBool" />
             </Grid.Resources>
             <Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>
-            <Button Content="&#x26A5;" FontFamily="Segoe UI Symbol" FontSize="40" />
-            <!--<Button Content="&#x1f526;" FontFamily="Segoe UI Symbol" FontSize="40" />-->
-
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
