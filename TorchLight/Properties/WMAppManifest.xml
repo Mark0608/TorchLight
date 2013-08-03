@@ -5,7 +5,7 @@
     <Language code="en" />
   </Languages>
   <App xmlns="" ProductID="{18337e02-bf57-40f6-a790-4c465d923a29}" Title="TorchLight" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TorchLight author" Description="Sample description" Publisher="TorchLight" PublisherID="{57a0927e-3efd-470c-ba15-7fe5ee29e125}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\Tiles\TorchLightMedium.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_ISV_CAMERA" />
@@ -17,9 +17,9 @@
     <Tokens>
       <PrimaryToken TokenID="TorchLightToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\TorchLightSmall.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\TorchLightMedium.png</BackgroundImageURI>
           <Title>TorchLight</Title>
           <BackContent>
           </BackContent>
