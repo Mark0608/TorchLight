@@ -127,7 +127,9 @@
   <ItemGroup>
     <None Include="Assets\Tiles\TorchLight.xcf" />
     <None Include="packages.config" />
-    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\AppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
@@ -184,6 +186,10 @@
     <ProjectReference Include="..\Portable\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
       <Name>FlashLightApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portable\ViewModel\ViewModelApi\ViewModelApi.csproj">
+      <Project>{985A39CB-5CD9-441B-96D8-104B834C44E8}</Project>
+      <Name>ViewModelApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

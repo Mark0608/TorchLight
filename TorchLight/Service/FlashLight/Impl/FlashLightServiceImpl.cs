@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Windows.Phone.Media.Capture;
 using FlashLightApi;
 
-namespace TorchLight.IoC
+namespace TorchLight.Service.FlashLight.Impl
 {
     internal class FlashLightServiceImpl:IFlashLightService
     {

@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-namespace ViewModel
+namespace ViewModelApi
 {
     public class TorchLightViewModel:ViewModelBase
     {
