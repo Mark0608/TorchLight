@@ -10,7 +10,7 @@ namespace FlashLightApi
 
         event EventHandler<bool> FinishedInitialization;
 
-        void Init();
+        Task Init();
 
         Task TurnFlashOn();
         Task TurnFlashOff();

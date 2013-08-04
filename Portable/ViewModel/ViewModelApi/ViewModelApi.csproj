@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashscreenViewModel.cs" />
     <Compile Include="TorchLightViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\..\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
       <Name>FlashLightApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service\IoC\DependencyInjectorApi\DependencyInjectorApi.csproj">
+      <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
+      <Name>DependencyInjectorApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

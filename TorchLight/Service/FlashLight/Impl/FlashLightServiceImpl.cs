@@ -16,7 +16,7 @@ namespace TorchLight.Service.FlashLight.Impl
 
         const CameraSensorLocation SensorLocation = CameraSensorLocation.Back;
 
-        public async void Init()
+        public async Task Init()
         {
             _avDevice = await GetCameraDevice();
             IsInitialized = true;

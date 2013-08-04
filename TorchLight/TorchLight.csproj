@@ -106,8 +106,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\Splashscreen.xaml.cs">
-      <DependentUpon>Splashscreen.xaml</DependentUpon>
+    <Compile Include="View\SplashscreenPage.xaml.cs">
+      <DependentUpon>SplashscreenPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -119,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Splashscreen.xaml">
+    <Page Include="View\SplashscreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +186,10 @@
     <ProjectReference Include="..\Portable\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
       <Name>FlashLightApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portable\Service\IoC\DependencyInjectorApi\DependencyInjectorApi.csproj">
+      <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
+      <Name>DependencyInjectorApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\Portable\ViewModel\ViewModelApi\ViewModelApi.csproj">
       <Project>{985A39CB-5CD9-441B-96D8-104B834C44E8}</Project>

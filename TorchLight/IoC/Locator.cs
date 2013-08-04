@@ -1,4 +1,8 @@
-﻿using FlashLightApi;
+﻿using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using DependencyInjectorApi;
+using FlashLightApi;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using TorchLight.Service.FlashLight.Impl;
@@ -6,7 +10,7 @@ using ViewModelApi;
 
 namespace TorchLight.IoC
 {
-    public class Locator
+    public class Locator:ILocator
     {
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
@@ -27,14 +31,14 @@ namespace TorchLight.IoC
             ////}
 
             SimpleIoc.Default.Register<IFlashLightService,FlashLightServiceImpl>();
+            SimpleIoc.Default.Register<ILocator>(() => this);
+            SimpleIoc.Default.Register<SplashScreenViewModel>();
             SimpleIoc.Default.Register<TorchLightViewModel>();
-
-            Init();
         }
 
-        private void Init()
+        public async Task Init()
         {
-            ServiceLocator.Current.GetInstance<IFlashLightService>().Init();
+            await ServiceLocator.Current.GetInstance<IFlashLightService>().Init();
         }
 
         public TorchLightViewModel TorchLightViewModel
@@ -42,6 +46,14 @@ namespace TorchLight.IoC
             get
             {
                 return ServiceLocator.Current.GetInstance<TorchLightViewModel>();
+            }
+        }
+
+        public SplashScreenViewModel SplashScreenViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
             }
         }
 
