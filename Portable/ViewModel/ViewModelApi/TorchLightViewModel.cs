@@ -26,6 +26,11 @@ namespace ViewModelApi
             }
         }
 
+        public bool IsTorchOn
+        {
+            get { return _flashLightService.IsFlashOn; }
+        }
+
         public TorchLightViewModel(IFlashLightService flashLightService)
         {
             _flashLightService = flashLightService;

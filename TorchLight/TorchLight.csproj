@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converter\InvertBoolConverter.cs" />
     <Compile Include="Service\FlashLight\Impl\FlashLightServiceImpl.cs" />
     <Compile Include="IoC\Locator.cs" />

@@ -14,6 +14,58 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     DataContext="{Binding Source={StaticResource Locator}, Path=TorchLightViewModel}"
     shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="TorchButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+            <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}"/>
+            <Setter Property="Padding" Value="10,5,10,6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneButtonBasePressedForegroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneAccentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentContainer">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ButtonBackground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneDisabledBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="ButtonBackground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="ButtonBackground" BorderBrush="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="250" Height="350" Width="350" Opacity="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -42,17 +94,19 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Torch" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
             <TextBlock Text="Torch Control" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="50,50,50,50">
             <Grid.Resources>
                 <converter:InvertBoolConverter x:Key="InvertBool" />
             </Grid.Resources>
-            <Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>
+            <!--<Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>-->
+            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=false}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" />
+            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=true}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
