@@ -38,7 +38,7 @@ namespace TorchLight.IoC
 
         public async Task Init()
         {
-            await ServiceLocator.Current.GetInstance<IFlashLightService>().Init();
+            await ServiceLocator.Current.GetInstance<IFlashLightService>().AwaitableInit();
         }
 
         public TorchLightViewModel TorchLightViewModel

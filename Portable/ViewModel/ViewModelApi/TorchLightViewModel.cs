@@ -45,16 +45,16 @@ namespace ViewModelApi
             IsBusy = !_flashLightService.IsInitialized;
         }
 
-        private async void ToggleFlash()
+        private void ToggleFlash()
         {
             IsBusy = true;
             if (_flashLightService.IsFlashOn)
             {
-                await _flashLightService.TurnFlashOff();
+                _flashLightService.TurnFlashOff();
             }
             else
             {
-                await _flashLightService.TurnFlashOn();
+                _flashLightService.TurnFlashOn();
             }
             IsBusy = false;
         }

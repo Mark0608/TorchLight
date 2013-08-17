@@ -18,7 +18,7 @@ namespace TorchLight.View
             InitializeComponent();
         }
 
-        private async void OnSplashScreenLoaded(object sender, RoutedEventArgs e)
+        private void OnSplashScreenLoaded(object sender, RoutedEventArgs e)
         {
             var viewModel = ((SplashScreenViewModel) DataContext);
 

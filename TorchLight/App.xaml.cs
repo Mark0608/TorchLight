@@ -4,8 +4,10 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using FlashLightApi;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Practices.ServiceLocation;
 using TorchLight.Resources;
 
 namespace TorchLight
@@ -67,6 +69,7 @@ namespace TorchLight
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            ServiceLocator.Current.GetInstance<IFlashLightService>().Init();
         }
 
         // Code to execute when the application is deactivated (sent to background)

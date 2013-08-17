@@ -16,7 +16,7 @@ namespace TorchLight.Service.FlashLight.Impl
 
         const CameraSensorLocation SensorLocation = CameraSensorLocation.Back;
 
-        public async Task Init()
+        public async Task AwaitableInit()
         {
             _avDevice = await GetCameraDevice();
             IsInitialized = true;
@@ -27,7 +27,12 @@ namespace TorchLight.Service.FlashLight.Impl
             }
         }
 
-        public async Task TurnFlashOn()
+        public async void Init()
+        {
+            await AwaitableInit();
+        }
+
+        public void TurnFlashOn()
         {
             try
             {
@@ -58,7 +63,7 @@ private void SetFlashLightToMaxIntensity()
                     KnownCameraAudioVideoProperties.VideoTorchPower).Max);
         }
         
-        public async Task TurnFlashOff()
+        public void TurnFlashOff()
         {
             try
             {
