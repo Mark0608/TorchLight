@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DependencyInjectorApi;
+using FlashLightApi;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ViewModelApi;
@@ -13,8 +14,8 @@ namespace ViewModelTest
         public async Task Init_WhenCalled_ItCallsAndAwaitsTheInitMethodOfTheLocator()
         {
 
-            var locatorMock = new Mock<ILocator>();
-            locatorMock.Setup(l => l.Init()).Returns(Task.Delay(0));
+            var locatorMock = new Mock<IFlashLightService>();
+            locatorMock.Setup(l => l.AwaitableInit()).Returns(Task.Delay(0));
             var splashscreenViewModel = new SplashScreenViewModel(locatorMock.Object);
 
             splashscreenViewModel.Init();

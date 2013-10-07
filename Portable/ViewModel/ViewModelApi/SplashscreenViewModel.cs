@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DependencyInjectorApi;
+using FlashLightApi;
+using JetBrains.Annotations;
 
 namespace ViewModelApi
 {
     public class SplashScreenViewModel
     {
-        private readonly ILocator _locator;
-
+        private readonly IFlashLightService _flashLightService;
         public Action InitDoneCallback { get; set; }
 
-        public SplashScreenViewModel(ILocator locator)
+        public SplashScreenViewModel(IFlashLightService flashLightService)
         {
-            if (locator == null) throw new ArgumentNullException("locator");
-
-            _locator = locator;
+            if (flashLightService == null) throw new ArgumentNullException("flashLightService");
+            _flashLightService = flashLightService;
 
             // Ensure that the callback is always set
             InitDoneCallback = () => { };
@@ -22,7 +22,7 @@ namespace ViewModelApi
 
         public async void Init()
         {
-            await _locator.Init();
+            await _flashLightService.AwaitableInit();
             InitDoneCallback();
         }
     }

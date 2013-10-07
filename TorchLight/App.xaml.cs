@@ -8,6 +8,7 @@ using FlashLightApi;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
+using TorchLight.IoC;
 using TorchLight.Resources;
 
 namespace TorchLight
@@ -54,7 +55,7 @@ namespace TorchLight
                 // the application's idle detection.
                 // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
                 // and consume battery power when the user is not using the phone.
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+                //PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
         }
@@ -63,13 +64,14 @@ namespace TorchLight
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            ServiceLocator.Current.GetInstance<IFlashLightService>().Init();
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -82,6 +84,7 @@ namespace TorchLight
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
         }
 
         // Code to execute if a navigation fails

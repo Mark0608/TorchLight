@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
+      <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
+      <Name>FlashLightApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Service\IoC\DependencyInjectorApi\DependencyInjectorApi.csproj">
       <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
       <Name>DependencyInjectorApi</Name>

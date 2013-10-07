@@ -4,6 +4,6 @@ namespace DependencyInjectorApi
 {
     public interface ILocator
     {
-        Task Init();
+        //Task Init();
     }
 }

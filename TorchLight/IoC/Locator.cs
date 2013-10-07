@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DependencyInjectorApi;
 using FlashLightApi;
 using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
 using TorchLight.Service.FlashLight.Impl;
 using ViewModelApi;
@@ -36,10 +37,10 @@ namespace TorchLight.IoC
             SimpleIoc.Default.Register<TorchLightViewModel>();
         }
 
-        public async Task Init()
-        {
-            await ServiceLocator.Current.GetInstance<IFlashLightService>().AwaitableInit();
-        }
+        //public async Task Init()
+        //{
+        //    await ServiceLocator.Current.GetInstance<IFlashLightService>().AwaitableInit();
+        //}
 
         public TorchLightViewModel TorchLightViewModel
         {

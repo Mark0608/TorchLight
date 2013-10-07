@@ -100,7 +100,7 @@
         </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="50,50,50,50">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="50,210">
             <Grid.Resources>
                 <converter:InvertBoolConverter x:Key="InvertBool" />
             </Grid.Resources>
