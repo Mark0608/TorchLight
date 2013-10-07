@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.Phone.Media.Capture;
 using FlashLightApi;
+using Microsoft.Phone.Shell;
 
 namespace TorchLight.Service.FlashLight.Impl
 {
@@ -42,6 +43,7 @@ namespace TorchLight.Service.FlashLight.Impl
                     SetFlashLightToMaxIntensity();
 
                     IsFlashOn = true;
+                    PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
                 }
                 else
                 {
@@ -72,8 +74,8 @@ private void SetFlashLightToMaxIntensity()
                     ChangeTorchMode(VideoTorchMode.Off);
                     SetFlashLightToMaxIntensity();
 
-                    IsFlashOn = true;
                     IsFlashOn = false;
+                    PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
                 }
                 else
                 {
