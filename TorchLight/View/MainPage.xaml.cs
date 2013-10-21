@@ -1,4 +1,7 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Constants;
+using Microsoft.Phone.Controls;
+using System.Windows.Navigation;
+using ViewModelApi;
 
 namespace TorchLight.View
 {
@@ -11,6 +14,13 @@ namespace TorchLight.View
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            ((TorchLightViewModel)DataContext).Mode = TorchLightMode.BackLight;
         }
 
         // Sample code for building a localized ApplicationBar

@@ -1,4 +1,5 @@
-﻿using FlashLightApi;
+﻿using Constants;
+using FlashLightApi;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -9,7 +10,20 @@ namespace ViewModelApi
         private readonly IFlashLightService _flashLightService;
         private bool _isBusy;
 
+        public TorchLightViewModel(IFlashLightService flashLightService)
+        {
+            _flashLightService = flashLightService;
+            IsBusy = !_flashLightService.IsInitialized;
+            _flashLightService.FinishedInitialization += FlashLightServiceOnFinishedInitialization;
+
+            TorchButtonPushed = new RelayCommand(ToggleFlash);
+        }
+
+        #region properties
+
         public RelayCommand TorchButtonPushed { get; set; }
+
+        public TorchLightMode Mode { get; set; }
 
         public string SwitchLabel
         {
@@ -31,14 +45,9 @@ namespace ViewModelApi
             get { return _flashLightService.IsFlashOn; }
         }
 
-        public TorchLightViewModel(IFlashLightService flashLightService)
-        {
-            _flashLightService = flashLightService;
-            IsBusy = !_flashLightService.IsInitialized;
-            _flashLightService.FinishedInitialization += FlashLightServiceOnFinishedInitialization;
+        public bool LightScreen { get; set; }
 
-            TorchButtonPushed = new RelayCommand(ToggleFlash);
-        }
+        #endregion
 
         private void FlashLightServiceOnFinishedInitialization(object sender, bool b)
         {
@@ -48,6 +57,25 @@ namespace ViewModelApi
         private void ToggleFlash()
         {
             IsBusy = true;
+
+            if (Mode == TorchLightMode.BackLight)
+            {
+                ToggleBacklight();
+            }
+            else
+            {
+                ToggleScreen();
+            }
+            IsBusy = false;
+        }
+
+        private void ToggleScreen()
+        {
+            LightScreen = !LightScreen;
+        }
+
+        private void ToggleBacklight()
+        {
             if (_flashLightService.IsFlashOn)
             {
                 _flashLightService.TurnFlashOff();
@@ -56,7 +84,8 @@ namespace ViewModelApi
             {
                 _flashLightService.TurnFlashOn();
             }
-            IsBusy = false;
         }
+
+
     }
 }

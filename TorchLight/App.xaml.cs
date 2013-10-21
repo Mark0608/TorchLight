@@ -35,6 +35,9 @@ namespace TorchLight
             // Phone-specific initialization
             InitializePhoneApplication();
 
+	    // Set theme to dark
+            ThemeManager.ToDarkTheme();
+
             // Language display initialization
             InitializeLanguage();
 
