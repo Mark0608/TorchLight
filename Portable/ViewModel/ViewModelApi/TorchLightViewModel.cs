@@ -2,28 +2,47 @@
 using FlashLightApi;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Storage;
+using System;
 
 namespace ViewModelApi
 {
     public class TorchLightViewModel:ViewModelBase
     {
         private readonly IFlashLightService _flashLightService;
+        private readonly IStorageService _storageService;
         private bool _isBusy;
+        private TorchLightMode _torchLightMode;
 
-        public TorchLightViewModel(IFlashLightService flashLightService)
+        public TorchLightViewModel(IFlashLightService flashLightService, IStorageService storageService)
         {
+            if (flashLightService == null) throw new ArgumentNullException("flashLightService");
+            if (storageService == null) throw new ArgumentNullException("storageService");
+
             _flashLightService = flashLightService;
+            _storageService = storageService;
+
             IsBusy = !_flashLightService.IsInitialized;
             _flashLightService.FinishedInitialization += FlashLightServiceOnFinishedInitialization;
 
             TorchButtonPushed = new RelayCommand(ToggleFlash);
+
+            _torchLightMode = _storageService.LoadSetting<TorchLightMode>(Consts.TorchLightModeSettingsName);
         }
 
         #region properties
 
         public RelayCommand TorchButtonPushed { get; set; }
 
-        public TorchLightMode Mode { get; set; }
+        public TorchLightMode TorchLightMode
+        {
+            get { return _torchLightMode; }
+            set
+            {
+                _torchLightMode = value;
+                _storageService.StoreSetting(Consts.TorchLightModeSettingsName, _torchLightMode);
+            }
+        }
 
         public string SwitchLabel
         {
@@ -58,7 +77,7 @@ namespace ViewModelApi
         {
             IsBusy = true;
 
-            if (Mode == TorchLightMode.BackLight)
+            if (TorchLightMode == TorchLightMode.BackLight)
             {
                 ToggleBacklight();
             }

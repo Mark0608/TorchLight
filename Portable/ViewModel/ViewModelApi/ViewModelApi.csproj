@@ -64,6 +64,10 @@
       <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
       <Name>DependencyInjectorApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Service\Storage\Storage\Storage.csproj">
+      <Project>{a0c95dfd-fab1-47a1-85ff-567e8d7447f9}</Project>
+      <Name>Storage %28Portable\Service\Storage\Storage%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />

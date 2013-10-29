@@ -20,7 +20,9 @@ namespace TorchLight.View
         {
             base.OnNavigatedTo(e);
 
-            ((TorchLightViewModel)DataContext).Mode = TorchLightMode.BackLight;
+            NavigationService.RemoveBackEntry();
+
+            ((TorchLightViewModel)DataContext).TorchLightMode = TorchLightMode.BackLight;
         }
 
         // Sample code for building a localized ApplicationBar

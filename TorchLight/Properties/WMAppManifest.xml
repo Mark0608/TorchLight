@@ -4,12 +4,16 @@
   <Languages xmlns="">
     <Language code="en" />
   </Languages>
-  <App xmlns="" ProductID="{18337e02-bf57-40f6-a790-4c465d923a29}" Title="Torch" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TorchLight author" Description="Sample description" Publisher="TorchLight" PublisherID="{57a0927e-3efd-470c-ba15-7fe5ee29e125}">
+  <App xmlns="" ProductID="{2339e7a8-7b8a-43dd-a9e8-1d0b1abce959}" Title="Torch" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TorchLight author" Description="Sample description" Publisher="TorchLight" PublisherID="{57a0927e-3efd-470c-ba15-7fe5ee29e125}">
     <IconPath IsRelative="true" IsResource="false">Assets\Tiles\TorchLightMedium.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_ISV_CAMERA" />
       <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="View\SplashscreenPage.xaml" />

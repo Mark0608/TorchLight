@@ -8,11 +8,14 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using ViewModelApi;
+using Storage;
+using Constants;
 
 namespace TorchLight.View
 {
     public partial class SplashScreenPage : PhoneApplicationPage
     {
+        private readonly IStorageService _storageService;
         public SplashScreenPage()
         {
             InitializeComponent();
@@ -29,8 +32,18 @@ namespace TorchLight.View
 
         private void InitDoneCallback()
         {
-            NavigationService.Navigate(new Uri("/View/MainPage.xaml", UriKind.Relative));
-            NavigationService.RemoveBackEntry();
+            var currentFlashLightMode = ((SplashScreenViewModel) DataContext).GetCurrentTorchLightMode();
+
+            if (currentFlashLightMode == TorchLightMode.BackLight)
+            {
+                NavigationService.Navigate(new Uri("/View/MainPage.xaml", UriKind.Relative));
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/View/ScreenTorchPage.xaml", UriKind.Relative));
+            }
+
+            //NavigationService.RemoveBackEntry();
         }
     }
 }

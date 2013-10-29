@@ -8,6 +8,8 @@ using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
 using TorchLight.Service.FlashLight.Impl;
 using ViewModelApi;
+using TorchLight.Service.Storage;
+using Storage;
 
 namespace TorchLight.IoC
 {
@@ -32,6 +34,7 @@ namespace TorchLight.IoC
             ////}
 
             SimpleIoc.Default.Register<IFlashLightService,FlashLightServiceImpl>();
+            SimpleIoc.Default.Register<IStorageService,StorageService>();
             SimpleIoc.Default.Register<ILocator>(() => this);
             SimpleIoc.Default.Register<SplashScreenViewModel>();
             SimpleIoc.Default.Register<TorchLightViewModel>();

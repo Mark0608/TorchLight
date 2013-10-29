@@ -8,10 +8,10 @@
     xmlns:Converter="clr-namespace:TorchLight.Converter" 
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
     xmlns:AppBarUtils="clr-namespace:AppBarUtils;assembly=AppBarUtils"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
     x:Class="TorchLight.ScreenTorchPage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource Locator}, Path=TorchLightViewModel}"
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.Opacity="0.1">
 
@@ -68,6 +68,9 @@
         <Converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Converter:BooleanToBlackWhiteConverter x:Key="BooleanToBlackWhiteConverter" />
     </phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.DataContext>
+        <Binding Path="TorchLightViewModel" Source="{StaticResource Locator}"/>
+    </phone:PhoneApplicationPage.DataContext>
     <phone:PhoneApplicationPage.FontFamily>
         <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
     </phone:PhoneApplicationPage.FontFamily>
@@ -77,24 +80,6 @@
     <phone:PhoneApplicationPage.Foreground>
         <StaticResource ResourceKey="PhoneForegroundBrush"/>
     </phone:PhoneApplicationPage.Foreground>
-
-    <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="{Binding LightScreen, Converter={StaticResource BooleanToBlackWhiteConverter}}">
-    <!--<Grid x:Name="LayoutRoot" Background="White">-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="TorchButtonContainer" Grid.Row="1" Margin="50,150">
-            <Grid.Resources>
-                <Converter:InvertBoolConverter x:Key="InvertBool" />
-            </Grid.Resources>
-            <!--<Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>-->
-            <Button Content="&#xe1c9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" />
-            <Button Content="&#xe1c9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
-        </Grid>
-
-    </Grid>
 
     <!-- App bar -->
     <phone:PhoneApplicationPage.ApplicationBar>
@@ -106,5 +91,23 @@
     <i:Interaction.Behaviors>
         <AppBarUtils:AppBarItemNavigation Id="switchToBackLightTorchMode" IconUri="/Assets/Icons/switch.png" TargetPage="/View/MainPage.xaml"/>
     </i:Interaction.Behaviors>
+
+    <Grid x:Name="LayoutRoot" Background="{Binding LightScreen, Converter={StaticResource BooleanToBlackWhiteConverter}}">
+        <!--<Grid x:Name="LayoutRoot" Background="White">-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TorchButtonContainer" Grid.Row="1" Margin="50,150">
+            <Grid.Resources>
+                <Converter:InvertBoolConverter x:Key="InvertBool" />
+            </Grid.Resources>
+            <!--<Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>-->
+            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" />
+            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+        </Grid>
+
+        <UI:AdControl ApplicationId="test_client" AdUnitId="Image480_80" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>
+    </Grid>
 
 </phone:PhoneApplicationPage>

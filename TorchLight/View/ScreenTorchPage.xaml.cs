@@ -23,7 +23,9 @@ namespace TorchLight
         {
             base.OnNavigatedTo(e);
 
-            ((TorchLightViewModel)DataContext).Mode = TorchLightMode.Screen;
+            NavigationService.RemoveBackEntry();
+
+            ((TorchLightViewModel)DataContext).TorchLightMode = TorchLightMode.Screen;
         }
     }
 }

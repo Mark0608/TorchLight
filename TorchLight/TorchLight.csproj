@@ -100,6 +100,7 @@
     <Compile Include="Service\FlashLight\Impl\FlashLightServiceImpl.cs" />
     <Compile Include="IoC\Locator.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Service\Storage\StorageService.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -193,9 +194,12 @@
     <Reference Include="JeffWilcox.PhoneThemeManager">
       <HintPath>..\packages\PhoneThemeManager.1.5\lib\sl4-windowsphone71\JeffWilcox.PhoneThemeManager.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Advertising.Mobile, Version=6.2.960.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="microsoft.advertising.mobile.ui, Version=6.2.960.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Expression.Interactions, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Unofficial.Blend.Interactivity.1.0.0\lib\wp8\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
@@ -218,6 +222,10 @@
     <ProjectReference Include="..\Portable\Service\IoC\DependencyInjectorApi\DependencyInjectorApi.csproj">
       <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
       <Name>DependencyInjectorApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portable\Service\Storage\Storage\Storage.csproj">
+      <Project>{A0C95DFD-FAB1-47A1-85FF-567E8D7447F9}</Project>
+      <Name>Storage %28Portable\Service\Storage\Storage%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Portable\ViewModel\ViewModelApi\ViewModelApi.csproj">
       <Project>{985A39CB-5CD9-441B-96D8-104B834C44E8}</Project>
