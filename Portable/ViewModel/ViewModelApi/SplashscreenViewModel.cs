@@ -35,6 +35,8 @@ namespace ViewModelApi
 
         public TorchLightMode GetCurrentTorchLightMode()
         {
+            if (!_flashLightService.IsFlashSupported()) return TorchLightMode.Screen;
+
             return _storageService.LoadSetting<TorchLightMode>(Consts.TorchLightModeSettingsName);
         }
     }

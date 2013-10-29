@@ -35,30 +35,16 @@ namespace TorchLight.Service.FlashLight.Impl
 
         public void TurnFlashOn()
         {
-            try
-            {
-                if (IsFlashSupported())
-                {
-                    ChangeTorchMode(VideoTorchMode.On);
-                    SetFlashLightToMaxIntensity();
+            if (!IsFlashSupported()) return;
 
-                    IsFlashOn = true;
-                    PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
-                }
-                else
-                {
-                    //ShowWhiteScreenInsteadOfCameraTorch();
-                }
+            ChangeTorchMode(VideoTorchMode.On);
+            SetFlashLightToMaxIntensity();
 
-            }
-            catch (Exception ex)
-            {
-                // Flashlight isn't supported on this device, instead show a White Screen as the flash light
-                //ShowWhiteScreenInsteadOfCameraTorch();
-            }
+            IsFlashOn = true;
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
-private void SetFlashLightToMaxIntensity()
+        private void SetFlashLightToMaxIntensity()
         {
             _avDevice.SetProperty(KnownCameraAudioVideoProperties.VideoTorchPower,
                 AudioVideoCaptureDevice.GetSupportedPropertyRange(SensorLocation,
@@ -67,41 +53,21 @@ private void SetFlashLightToMaxIntensity()
         
         public void TurnFlashOff()
         {
-            try
-            {
-                if (IsFlashSupported())
-                {
-                    ChangeTorchMode(VideoTorchMode.Off);
-                    SetFlashLightToMaxIntensity();
+            if (!IsFlashSupported()) return;
 
-                    IsFlashOn = false;
-                    PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
-                }
-                else
-                {
-                    //ShowWhiteScreenInsteadOfCameraTorch();
-                }
+            ChangeTorchMode(VideoTorchMode.Off);
+            SetFlashLightToMaxIntensity();
 
-            }
-            catch (Exception ex)
-            {
-                // Flashlight isn't supported on this device, instead show a White Screen as the flash light
-                //ShowWhiteScreenInsteadOfCameraTorch();
-            }
+            IsFlashOn = false;
+            PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Enabled;
         }
         
         private void ChangeTorchMode(VideoTorchMode newTorchMode)
         {
             _avDevice.SetProperty(KnownCameraAudioVideoProperties.VideoTorchMode, newTorchMode);
-
-            // set flash power to maxinum
-                //_avDevice.SetProperty(KnownCameraAudioVideoProperties.VideoTorchPower,
-                //    AudioVideoCaptureDevice.GetSupportedPropertyRange(SensorLocation,
-                //        KnownCameraAudioVideoProperties.VideoTorchPower).Min);
- 
         }
 
-        private static bool IsFlashSupported()
+        public bool IsFlashSupported()
         {
             var supportedCameraModes = AudioVideoCaptureDevice
                 .GetSupportedPropertyValues(SensorLocation, KnownCameraAudioVideoProperties.VideoTorchMode);

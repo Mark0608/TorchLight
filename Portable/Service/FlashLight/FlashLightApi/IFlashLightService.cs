@@ -13,6 +13,8 @@ namespace FlashLightApi
         Task AwaitableInit();
         void Init();
 
+
+        bool IsFlashSupported();
         void TurnFlashOn();
         void TurnFlashOff();
     }

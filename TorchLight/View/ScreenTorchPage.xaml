@@ -82,15 +82,24 @@
     </phone:PhoneApplicationPage.Foreground>
 
     <!-- App bar -->
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Opacity="0.5">
             <shell:ApplicationBarIconButton IconUri="/Assets/Icons/switch.png" Text="switchToBackLightTorchMode"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
-    <i:Interaction.Behaviors>
+    <i:Interaction.Triggers>
+        <AppBarUtils:StateChangedTrigger State="{Binding IsBackLightModeAvailable}">
+            <AppBarUtils:SwitchAppBarAction>
+                <AppBarUtils:AppBar Id="0">
+                    <AppBarUtils:AppBarButton Id="switchToBackLightTorchMode" IconUri="/Assets/Icons/switch.png" TargetPage="/View/MainPage.xaml"/>
+                </AppBarUtils:AppBar>
+            </AppBarUtils:SwitchAppBarAction>
+        </AppBarUtils:StateChangedTrigger>
+    </i:Interaction.Triggers>-->
+    <!--<i:Interaction.Behaviors>
         <AppBarUtils:AppBarItemNavigation Id="switchToBackLightTorchMode" IconUri="/Assets/Icons/switch.png" TargetPage="/View/MainPage.xaml"/>
-    </i:Interaction.Behaviors>
+    </i:Interaction.Behaviors>-->
 
     <Grid x:Name="LayoutRoot" Background="{Binding LightScreen, Converter={StaticResource BooleanToBlackWhiteConverter}}">
         <!--<Grid x:Name="LayoutRoot" Background="White">-->

@@ -1,6 +1,9 @@
 ﻿using Constants;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+using System;
 using System.Windows.Navigation;
+using TorchLight.Resources;
 using ViewModelApi;
 
 namespace TorchLight.View
@@ -13,8 +16,27 @@ namespace TorchLight.View
             InitializeComponent();
 
             // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            BuildLocalizedApplicationBar();
         }
+
+        private void BuildLocalizedApplicationBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Opacity = 0.5;
+
+            ApplicationBarIconButton changeTorchModeButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/switch.png", UriKind.Relative));
+
+            changeTorchModeButton.Text = AppResources.ScreenFlashLightLabel;
+            changeTorchModeButton.Click += SwitchToFlashLightMode;
+
+            ApplicationBar.Buttons.Add(changeTorchModeButton);
+        }
+
+        private void SwitchToFlashLightMode(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/ScreenTorchPage.xaml", UriKind.Relative));
+        }
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -24,21 +46,5 @@ namespace TorchLight.View
 
             ((TorchLightViewModel)DataContext).TorchLightMode = TorchLightMode.BackLight;
         }
-
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
     }
 }

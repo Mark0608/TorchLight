@@ -8,6 +8,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using TorchLight.Resources;
 using ViewModelApi;
 
 namespace TorchLight
@@ -17,6 +18,26 @@ namespace TorchLight
         public ScreenTorchPage()
         {
             InitializeComponent();
+
+            BuildLocalizedApplicationBar();
+        }
+
+        private void BuildLocalizedApplicationBar()
+        {
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Opacity = 0.5;
+
+            ApplicationBarIconButton changeTorchModeButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/switch.png", UriKind.Relative));
+
+            changeTorchModeButton.Text = AppResources.BacklightFlashLightLabel;
+            changeTorchModeButton.Click += SwitchToFlashLightMode;
+
+            ApplicationBar.Buttons.Add(changeTorchModeButton);
+        }
+
+        private void SwitchToFlashLightMode(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/MainPage.xaml", UriKind.Relative));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
