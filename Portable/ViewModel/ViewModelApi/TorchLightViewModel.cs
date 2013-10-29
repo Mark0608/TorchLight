@@ -105,6 +105,9 @@ namespace ViewModelApi
             }
         }
 
-
+        public bool IsTorchModeEnabled()
+        {
+            return _flashLightService.IsFlashSupported();
+        }
     }
 }

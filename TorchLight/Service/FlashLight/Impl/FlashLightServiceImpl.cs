@@ -71,7 +71,7 @@ namespace TorchLight.Service.FlashLight.Impl
         {
             var supportedCameraModes = AudioVideoCaptureDevice
                 .GetSupportedPropertyValues(SensorLocation, KnownCameraAudioVideoProperties.VideoTorchMode);
-            var flashSupported = supportedCameraModes.ToList().Contains((UInt32) VideoTorchMode.On);
+            var flashSupported = supportedCameraModes.ToList().Contains((UInt32)VideoTorchMode.On);
             return flashSupported;
         }
 
