@@ -107,13 +107,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <MediaElement x:Name="ClickSound" Source="/Assets/Sounds/click.wav" AutoPlay="False" />
+
         <Grid x:Name="TorchButtonContainer" Grid.Row="1" Margin="50,150">
             <Grid.Resources>
                 <Converter:InvertBoolConverter x:Key="InvertBool" />
             </Grid.Resources>
             <!--<Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>-->
-            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" />
-            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Click="Button_Click"/>
+            <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" Click="Button_Click" />
         </Grid>
 
         <UI:AdControl ApplicationId="test_client" AdUnitId="Image480_80" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>

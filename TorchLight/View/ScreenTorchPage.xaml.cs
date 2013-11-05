@@ -51,5 +51,10 @@ namespace TorchLight
 
             ((TorchLightViewModel)DataContext).TorchLightMode = TorchLightMode.Screen;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ClickSound.Play();
+        }
     }
 }

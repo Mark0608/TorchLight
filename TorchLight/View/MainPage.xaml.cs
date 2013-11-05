@@ -46,5 +46,10 @@ namespace TorchLight.View
 
             ((TorchLightViewModel)DataContext).TorchLightMode = TorchLightMode.BackLight;
         }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ClickSound.Play();
+        }
     }
 }

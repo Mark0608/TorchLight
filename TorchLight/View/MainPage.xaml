@@ -102,8 +102,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <MediaElement x:Name="ClickSound" Source="/Assets/Sounds/click.wav" AutoPlay="False" />
 
-        <!-- LOCALIZATION NOTE:
+
+            <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
             keys in the app's neutral language resource file (AppResources.resx) then
             replace the hard-coded text value between the attributes' quotation marks
@@ -141,8 +143,8 @@
                 <converter:InvertBoolConverter x:Key="InvertBool" />
             </Grid.Resources>
             <!--<Button Content="{Binding SwitchLabel}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}"/>-->
-            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" />
-            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, ConverterParameter=false, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Click="Button_Click" Style="{StaticResource TorchButtonStyle}" />
+            <Button Content="&#xE07D;" FontSize="100" Visibility="{Binding IsTorchOn, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Click="Button_Click" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
         </Grid>
 
         <UI:AdControl ApplicationId="test_client" AdUnitId="Image480_80" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>
