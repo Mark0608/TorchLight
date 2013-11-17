@@ -140,4 +140,13 @@
   <data name="ScreenFlashLightLabel" xml:space="preserve">
     <value>Screen Mode</value>
   </data>
+  <data name="SettingsLabel" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="DisabledLabel" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="EnabledLabel" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
 </root>

@@ -54,6 +54,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IBackgroundService.cs" />
+    <Compile Include="SettingsViewModelTest.cs" />
     <Compile Include="SplashscreenViewModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,9 +64,9 @@
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
       <Name>FlashLightApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Service\IoC\DependencyInjectorApi\DependencyInjectorApi.csproj">
-      <Project>{65C86E27-F67F-44AE-90D1-DC3EC68C7E5E}</Project>
-      <Name>DependencyInjectorApi</Name>
+    <ProjectReference Include="..\..\Service\Storage\Storage\Storage.csproj">
+      <Project>{a0c95dfd-fab1-47a1-85ff-567e8d7447f9}</Project>
+      <Name>Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModelApi\ViewModelApi.csproj">
       <Project>{985A39CB-5CD9-441B-96D8-104B834C44E8}</Project>

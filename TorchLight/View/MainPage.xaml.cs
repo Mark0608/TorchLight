@@ -25,11 +25,19 @@ namespace TorchLight.View
             ApplicationBar.Opacity = 0.5;
 
             ApplicationBarIconButton changeTorchModeButton = new ApplicationBarIconButton(new Uri("/Assets/Icons/switch.png", UriKind.Relative));
-
             changeTorchModeButton.Text = AppResources.ScreenFlashLightLabel;
             changeTorchModeButton.Click += SwitchToFlashLightMode;
 
+            ApplicationBarMenuItem settings = new ApplicationBarMenuItem();
+            settings.Text = AppResources.SettingsLabel;
+            settings.Click += SettingsSelected;
+
             ApplicationBar.Buttons.Add(changeTorchModeButton);
+        }
+
+        private void SettingsSelected(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
         }
 
         private void SwitchToFlashLightMode(object sender, EventArgs e)

@@ -97,6 +97,24 @@ namespace TorchLight.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string DisabledLabel {
+            get {
+                return ResourceManager.GetString("DisabledLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string EnabledLabel {
+            get {
+                return ResourceManager.GetString("EnabledLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {
@@ -120,6 +138,15 @@ namespace TorchLight.Resources {
         public static string ScreenFlashLightLabel {
             get {
                 return ResourceManager.GetString("ScreenFlashLightLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string SettingsLabel {
+            get {
+                return ResourceManager.GetString("SettingsLabel", resourceCulture);
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using DependencyInjectorApi;
 using FlashLightApi;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Phone.Shell;
@@ -10,10 +9,11 @@ using TorchLight.Service.FlashLight.Impl;
 using ViewModelApi;
 using TorchLight.Service.Storage;
 using Storage;
+using System;
 
 namespace TorchLight.IoC
 {
-    public class Locator:ILocator
+    public class Locator
     {
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
@@ -35,9 +35,10 @@ namespace TorchLight.IoC
 
             SimpleIoc.Default.Register<IFlashLightService,FlashLightServiceImpl>();
             SimpleIoc.Default.Register<IStorageService,StorageService>();
-            SimpleIoc.Default.Register<ILocator>(() => this);
+            //SimpleIoc.Default.Register<ILocator>(() => this);
             SimpleIoc.Default.Register<SplashScreenViewModel>();
             SimpleIoc.Default.Register<TorchLightViewModel>();
+            SimpleIoc.Default.Register<SettingsViewModel>();
         }
 
         //public async Task Init()
@@ -58,6 +59,14 @@ namespace TorchLight.IoC
             get
             {
                 return ServiceLocator.Current.GetInstance<SplashScreenViewModel>();
+            }
+        }
+
+        public SettingsViewModel SettingsViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SettingsViewModel>();
             }
         }
 

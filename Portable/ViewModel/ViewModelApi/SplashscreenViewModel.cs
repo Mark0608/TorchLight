@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DependencyInjectorApi;
 using FlashLightApi;
 using JetBrains.Annotations;
 using Constants;
@@ -30,6 +29,10 @@ namespace ViewModelApi
         public async void Init()
         {
             await _flashLightService.AwaitableInit();
+            if (!_storageService.HasSetting(Consts.BackgroundExecutionSettingsLabel))
+            {
+                _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);
+            }
             InitDoneCallback();
         }
 
