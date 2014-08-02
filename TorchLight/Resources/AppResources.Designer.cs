@@ -88,6 +88,42 @@ namespace TorchLight.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run under lockscreen.
+        /// </summary>
+        public static string BackgroundExecutionMessageBoxCaption {
+            get {
+                return ResourceManager.GetString("BackgroundExecutionMessageBoxCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string BackgroundExecutionMessageBoxLeftButton {
+            get {
+                return ResourceManager.GetString("BackgroundExecutionMessageBoxLeftButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will allow the torch to keep on shining even when you lock the screen..
+        /// </summary>
+        public static string BackgroundExecutionMessageBoxMessage {
+            get {
+                return ResourceManager.GetString("BackgroundExecutionMessageBoxMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string BackgroundExecutionMessageBoxRightButton {
+            get {
+                return ResourceManager.GetString("BackgroundExecutionMessageBoxRightButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Torch Mode.
         /// </summary>
         public static string BacklightFlashLightLabel {

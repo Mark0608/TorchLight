@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using ApplicationInitializerApi;
 using FlashLightApi;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
+using TorchLight.Service.ApplicationInitializer.Impl;
 using TorchLight.Service.FlashLight.Impl;
 using ViewModelApi;
 using TorchLight.Service.Storage;
@@ -35,6 +37,7 @@ namespace TorchLight.IoC
 
             SimpleIoc.Default.Register<IFlashLightService,FlashLightServiceImpl>();
             SimpleIoc.Default.Register<IStorageService,StorageService>();
+            SimpleIoc.Default.Register<IApplicationInitializerService,ApplicationInitializerService>();
             //SimpleIoc.Default.Register<ILocator>(() => this);
             SimpleIoc.Default.Register<SplashScreenViewModel>();
             SimpleIoc.Default.Register<TorchLightViewModel>();

@@ -7,6 +7,7 @@ namespace Constants
 {
     public static class Consts
     {
+        public static string FirstStartup = "TorchLightFirstStartup";
         public static string TorchLightModeSettingsName = "TorchLightMode";
         public const string BackgroundExecutionSettingsLabel = "BackgroundExecution";
         public const string TurnOnTorchAfterStartup = "TurnOnTorchAfterStartup";

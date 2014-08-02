@@ -149,4 +149,16 @@
   <data name="EnabledLabel" xml:space="preserve">
     <value>Enabled</value>
   </data>
+  <data name="BackgroundExecutionMessageBoxCaption" xml:space="preserve">
+    <value>Run under lockscreen</value>
+  </data>
+  <data name="BackgroundExecutionMessageBoxLeftButton" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="BackgroundExecutionMessageBoxMessage" xml:space="preserve">
+    <value>This will allow the torch to keep on shining even when you lock the screen.</value>
+  </data>
+  <data name="BackgroundExecutionMessageBoxRightButton" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

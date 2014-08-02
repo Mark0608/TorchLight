@@ -97,6 +97,7 @@
     <Compile Include="Converter\BooleanToBlackWhiteConverter.cs" />
     <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converter\InvertBoolConverter.cs" />
+    <Compile Include="Service\ApplicationInitializer\Impl\ApplicationInitializerService.cs" />
     <Compile Include="Service\Background\BackgroundService.cs" />
     <Compile Include="Service\FlashLight\Impl\FlashLightServiceImpl.cs" />
     <Compile Include="IoC\Locator.cs" />
@@ -225,6 +226,10 @@
     <ProjectReference Include="..\Portable\Resources\Constants\Constants.csproj">
       <Project>{1F11C3C0-11A0-4903-84D5-1257B0CD18F1}</Project>
       <Name>Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Portable\Service\ApplicationInitializer\ApplicationInitializerApi\ApplicationInitializerApi.csproj">
+      <Project>{93B8D775-D8FA-4DCC-A484-7809B312CA95}</Project>
+      <Name>ApplicationInitializerApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\Portable\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>

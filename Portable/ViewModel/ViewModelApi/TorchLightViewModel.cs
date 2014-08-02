@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using ApplicationInitializerApi;
+using Constants;
 using FlashLightApi;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -11,16 +12,19 @@ namespace ViewModelApi
     {
         private readonly IFlashLightService _flashLightService;
         private readonly IStorageService _storageService;
+        private readonly IApplicationInitializerService _applicationInitializerService;
         private bool _isBusy;
         private TorchLightMode _torchLightMode;
 
-        public TorchLightViewModel(IFlashLightService flashLightService, IStorageService storageService)
+        public TorchLightViewModel(IFlashLightService flashLightService, IStorageService storageService, IApplicationInitializerService applicationInitializerService)
         {
             if (flashLightService == null) throw new ArgumentNullException("flashLightService");
             if (storageService == null) throw new ArgumentNullException("storageService");
+            if (applicationInitializerService == null) throw new ArgumentNullException("applicationInitializerService");
 
             _flashLightService = flashLightService;
             _storageService = storageService;
+            _applicationInitializerService = applicationInitializerService;
 
             IsBusy = !_flashLightService.IsInitialized;
             _flashLightService.FinishedInitialization += FlashLightServiceOnFinishedInitialization;
@@ -70,6 +74,11 @@ namespace ViewModelApi
 
         public void Init()
         {
+            if (!_storageService.HasSetting(Consts.FirstStartup))
+            {
+                _applicationInitializerService.Init();
+            }
+
             if (_storageService.LoadSetting<bool>(Consts.TurnOnTorchAfterStartup))
             {
                 ToggleFlash();

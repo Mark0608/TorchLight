@@ -42,8 +42,6 @@ namespace TorchLight.View
             {
                 NavigationService.Navigate(new Uri("/View/ScreenTorchPage.xaml", UriKind.Relative));
             }
-
-            //NavigationService.RemoveBackEntry();
         }
     }
 }

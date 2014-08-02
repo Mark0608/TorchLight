@@ -57,6 +57,10 @@
       <Project>{1f11c3c0-11a0-4903-84d5-1257b0cd18f1}</Project>
       <Name>Constants</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Service\ApplicationInitializer\ApplicationInitializerApi\ApplicationInitializerApi.csproj">
+      <Project>{93B8D775-D8FA-4DCC-A484-7809B312CA95}</Project>
+      <Name>ApplicationInitializerApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Service\FlashLight\FlashLightApi\FlashLightApi.csproj">
       <Project>{9D290BCC-5896-4737-9D13-F4AF9C1E644F}</Project>
       <Name>FlashLightApi</Name>
