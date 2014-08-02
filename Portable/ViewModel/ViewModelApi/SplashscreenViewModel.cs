@@ -33,6 +33,12 @@ namespace ViewModelApi
             {
                 _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);
             }
+
+            if (!_storageService.HasSetting(Consts.TurnOnTorchAfterStartup))
+            {
+                _storageService.StoreSetting<bool>(Consts.TurnOnTorchAfterStartup, false);
+            }
+
             InitDoneCallback();
         }
 

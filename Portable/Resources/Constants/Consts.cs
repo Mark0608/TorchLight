@@ -9,5 +9,6 @@ namespace Constants
     {
         public static string TorchLightModeSettingsName = "TorchLightMode";
         public const string BackgroundExecutionSettingsLabel = "BackgroundExecution";
+        public const string TurnOnTorchAfterStartup = "TurnOnTorchAfterStartup";
     }
 }

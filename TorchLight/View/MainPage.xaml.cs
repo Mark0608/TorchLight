@@ -33,6 +33,7 @@ namespace TorchLight.View
             settings.Click += SettingsSelected;
 
             ApplicationBar.Buttons.Add(changeTorchModeButton);
+            ApplicationBar.MenuItems.Add(settings);
         }
 
         private void SettingsSelected(object sender, EventArgs e)

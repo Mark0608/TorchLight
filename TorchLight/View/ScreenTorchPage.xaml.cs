@@ -35,12 +35,22 @@ namespace TorchLight
             changeTorchModeButton.Text = AppResources.BacklightFlashLightLabel;
             changeTorchModeButton.Click += SwitchToFlashLightMode;
 
+            ApplicationBarMenuItem settings = new ApplicationBarMenuItem();
+            settings.Text = AppResources.SettingsLabel;
+            settings.Click += SettingsSelected;
+
             ApplicationBar.Buttons.Add(changeTorchModeButton);
+            ApplicationBar.MenuItems.Add(settings);
         }
 
         private void SwitchToFlashLightMode(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/View/MainPage.xaml", UriKind.Relative));
+        }
+
+        private void SettingsSelected(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/SettingsPage.xaml", UriKind.Relative));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
