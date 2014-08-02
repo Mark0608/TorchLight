@@ -29,6 +29,7 @@ namespace ViewModelApi
         public async void Init()
         {
             await _flashLightService.AwaitableInit();
+
             if (!_storageService.HasSetting(Consts.BackgroundExecutionSettingsLabel))
             {
                 _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);

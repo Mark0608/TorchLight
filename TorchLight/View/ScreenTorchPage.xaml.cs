@@ -66,5 +66,10 @@ namespace TorchLight
         {
             ClickSound.Play();
         }
+
+        private void MainPageLoadedHandler(object sender, RoutedEventArgs e)
+        {
+            ((TorchLightViewModel)DataContext).Init();
+        }
     }
 }

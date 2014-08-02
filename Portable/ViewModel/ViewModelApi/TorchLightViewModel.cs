@@ -44,11 +44,6 @@ namespace ViewModelApi
             }
         }
 
-        public string SwitchLabel
-        {
-            get { return _flashLightService.IsFlashOn ? "Turn torch off":"Turn torch on"; }
-        }
-
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -67,6 +62,19 @@ namespace ViewModelApi
         public bool LightScreen { get; set; }
 
         #endregion
+
+        public bool IsTorchModeEnabled()
+        {
+            return _flashLightService.IsFlashSupported();
+        }
+
+        public void Init()
+        {
+            if (_storageService.LoadSetting<bool>(Consts.TurnOnTorchAfterStartup))
+            {
+                ToggleFlash();
+            }
+        }
 
         private void FlashLightServiceOnFinishedInitialization(object sender, bool b)
         {
@@ -103,11 +111,6 @@ namespace ViewModelApi
             {
                 _flashLightService.TurnFlashOn();
             }
-        }
-
-        public bool IsTorchModeEnabled()
-        {
-            return _flashLightService.IsFlashSupported();
         }
     }
 }

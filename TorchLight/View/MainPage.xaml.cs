@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using System.Windows;
+using Constants;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
@@ -59,6 +60,11 @@ namespace TorchLight.View
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             ClickSound.Play();
+        }
+
+        private void MainPageLoadedHandler(object sender, RoutedEventArgs e)
+        {
+            ((TorchLightViewModel)DataContext).Init();
         }
     }
 }
