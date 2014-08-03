@@ -17,6 +17,7 @@ namespace ViewModelApi
         private readonly IApplicationInitializerService _applicationInitializerService;
         private bool _isBusy;
         private TorchLightMode _torchLightMode;
+        private bool _isFirstInit;
 
         public TorchLightViewModel(IFlashLightService flashLightService, IStorageService storageService, IApplicationInitializerService applicationInitializerService)
         {
@@ -34,6 +35,8 @@ namespace ViewModelApi
             IsBusy = !_flashLightService.IsInitialized;
 
             _torchLightMode = _storageService.LoadSetting<TorchLightMode>(Consts.TorchLightModeSettingsName);
+
+            _isFirstInit = true;
 
             Messenger.Default.Register<AppResumedMessage>(this, message => Init());
             Messenger.Default.Register<AppDeactivatedMessage>(this, message => _flashLightService.TurnFlashOff());
@@ -84,8 +87,9 @@ namespace ViewModelApi
                 _applicationInitializerService.Init();
             }
 
-            if (_storageService.LoadSetting<bool>(Consts.TurnOnTorchAfterStartup))
+            if (_storageService.LoadSetting<bool>(Consts.TurnOnTorchAfterStartup) && _isFirstInit)
             {
+                _isFirstInit = false;
                 ToggleFlash();
             }
         }
