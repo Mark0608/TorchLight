@@ -12,7 +12,6 @@
     x:Class="TorchLight.ScreenTorchPage"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True"
     shell:SystemTray.Opacity="0.1"
     Loaded="MainPageLoadedHandler">
 
