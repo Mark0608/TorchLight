@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using System.IO;
+using Constants;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
@@ -8,6 +9,8 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using TorchLight.Resources;
 using ViewModelApi;
 
@@ -15,11 +18,19 @@ namespace TorchLight
 {
     public partial class ScreenTorchPage : PhoneApplicationPage
     {
+        private readonly SoundEffect _effect;
+
         public ScreenTorchPage()
         {
             InitializeComponent();
 
             BuildLocalizedApplicationBar();
+
+            const string soundFile = "Assets/Sounds/click.wav";
+            Stream stream = TitleContainer.OpenStream(soundFile);
+
+            _effect = SoundEffect.FromStream(stream);
+            FrameworkDispatcher.Update();
         }
 
         private void BuildLocalizedApplicationBar()
@@ -64,7 +75,7 @@ namespace TorchLight
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ClickSound.Play();
+            _effect.Play();
         }
 
         private void MainPageLoadedHandler(object sender, RoutedEventArgs e)

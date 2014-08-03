@@ -83,24 +83,6 @@
     </phone:PhoneApplicationPage.Foreground>
 
     <!-- App bar -->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Opacity="0.5">
-            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/switch.png" Text="switchToBackLightTorchMode"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
-    <i:Interaction.Triggers>
-        <AppBarUtils:StateChangedTrigger State="{Binding IsBackLightModeAvailable}">
-            <AppBarUtils:SwitchAppBarAction>
-                <AppBarUtils:AppBar Id="0">
-                    <AppBarUtils:AppBarButton Id="switchToBackLightTorchMode" IconUri="/Assets/Icons/switch.png" TargetPage="/View/MainPage.xaml"/>
-                </AppBarUtils:AppBar>
-            </AppBarUtils:SwitchAppBarAction>
-        </AppBarUtils:StateChangedTrigger>
-    </i:Interaction.Triggers>-->
-    <!--<i:Interaction.Behaviors>
-        <AppBarUtils:AppBarItemNavigation Id="switchToBackLightTorchMode" IconUri="/Assets/Icons/switch.png" TargetPage="/View/MainPage.xaml"/>
-    </i:Interaction.Behaviors>-->
 
     <Grid x:Name="LayoutRoot" Background="{Binding LightScreen, Converter={StaticResource BooleanToBlackWhiteConverter}}">
         <!--<Grid x:Name="LayoutRoot" Background="White">-->
@@ -108,8 +90,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <MediaElement x:Name="ClickSound" Source="/Assets/Sounds/click.wav" AutoPlay="False" />
 
         <Grid x:Name="TorchButtonContainer" Grid.Row="1" Margin="50,150">
             <Grid.Resources>
@@ -120,7 +100,8 @@
             <Button Content="&#xE1C9;" FontSize="100" Visibility="{Binding LightScreen, ConverterParameter=true, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe UI Symbol" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertBool}}" Command="{Binding TorchButtonPushed}" Style="{StaticResource TorchButtonStyle}" Foreground="{StaticResource PhoneAccentBrush}" Click="Button_Click" />
         </Grid>
 
-        <UI:AdControl ApplicationId="test_client" AdUnitId="Image480_80" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>
+        <!--<UI:AdControl ApplicationId="test_client" AdUnitId="Image480_80" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>-->
+        <UI:AdControl ApplicationId="2339e7a8-7b8a-43dd-a9e8-1d0b1abce959" AdUnitId="149067" Height="80" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="480" HorizontalAlignment="Center"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

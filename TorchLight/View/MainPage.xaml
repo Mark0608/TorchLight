@@ -103,10 +103,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <MediaElement x:Name="ClickSound" Source="/Assets/Sounds/click.wav" AutoPlay="False" />
-
-
-            <!-- LOCALIZATION NOTE:
+        <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
             keys in the app's neutral language resource file (AppResources.resx) then
             replace the hard-coded text value between the attributes' quotation marks

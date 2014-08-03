@@ -1,9 +1,12 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using Constants;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
 using System.Windows.Navigation;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using TorchLight.Resources;
 using ViewModelApi;
 
@@ -11,6 +14,7 @@ namespace TorchLight.View
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private readonly SoundEffect _effect;
         // Constructor
         public MainPage()
         {
@@ -18,6 +22,12 @@ namespace TorchLight.View
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
+
+            const string soundFile = "Assets/Sounds/click.wav";
+            Stream stream = TitleContainer.OpenStream(soundFile);
+
+            _effect = SoundEffect.FromStream(stream);
+            FrameworkDispatcher.Update();
         }
 
         private void BuildLocalizedApplicationBar()
@@ -59,7 +69,7 @@ namespace TorchLight.View
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ClickSound.Play();
+            _effect.Play();
         }
 
         private void MainPageLoadedHandler(object sender, RoutedEventArgs e)
