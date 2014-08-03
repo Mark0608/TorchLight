@@ -17,12 +17,12 @@ namespace ViewModelApi
 
         public bool IsBackgroundExecutionEnabled
         {
-            get { return _storageService.LoadSetting<bool>(Consts.BackgroundExecutionSettingsLabel); }
+            get { return _storageService.LoadSetting<bool>(Consts.BackgroundExecutionEnabled); }
             set 
             {
-                if (value == _storageService.LoadSetting<bool>(Consts.BackgroundExecutionSettingsLabel)) return;
+                if (value == _storageService.LoadSetting<bool>(Consts.BackgroundExecutionEnabled)) return;
 
-                _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, value);
+                _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, value);
             }
         }
 

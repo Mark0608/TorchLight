@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Resources;
+using System.IO.IsolatedStorage;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using Constants;
 using Constants.Messages;
-using FlashLightApi;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Microsoft.Practices.ServiceLocation;
-using TorchLight.IoC;
 using TorchLight.Resources;
 
 namespace TorchLight
@@ -69,6 +67,12 @@ namespace TorchLight
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains(Consts.BackgroundExecutionEnabled)) return;
+
+            if ((bool)IsolatedStorageSettings.ApplicationSettings[Consts.BackgroundExecutionEnabled])
+            {
+                PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
+            }
         }
 
         // Code to execute when the application is activated (brought to foreground)

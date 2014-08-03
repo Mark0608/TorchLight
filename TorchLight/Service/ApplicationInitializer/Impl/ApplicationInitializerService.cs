@@ -18,12 +18,12 @@ namespace TorchLight.Service.ApplicationInitializer.Impl
             if (storageService == null) throw new ArgumentNullException("storageService");
 
             _storageService = storageService;
-            _storageService.RegisterForStorageChange(Consts.BackgroundExecutionSettingsLabel, UpdateRunInBackground);
+            _storageService.RegisterForStorageChange(Consts.BackgroundExecutionEnabled, UpdateRunInBackground);
         }
 
         public void Init()
         {
-            if (!_storageService.HasSetting(Consts.BackgroundExecutionSettingsLabel))
+            if (!_storageService.HasSetting(Consts.BackgroundExecutionEnabled))
             {
                 var runUnderLockscreenMessage = new CustomMessageBox
                 {
@@ -44,13 +44,13 @@ namespace TorchLight.Service.ApplicationInitializer.Impl
             switch (dismissedEventArgs.Result)
             {
                 case CustomMessageBoxResult.RightButton:
-                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);
+                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, true);
                     break;
                 case CustomMessageBoxResult.LeftButton:
-                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, false);
+                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, false);
                     break;
                 case CustomMessageBoxResult.None:
-                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, false);
+                    _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, false);
                     break;
             }
 
@@ -61,13 +61,13 @@ namespace TorchLight.Service.ApplicationInitializer.Impl
         {
             try
             {
-                if (_storageService.LoadSetting<bool>(Consts.BackgroundExecutionSettingsLabel))
+                if (_storageService.LoadSetting<bool>(Consts.BackgroundExecutionEnabled))
                 {
                     PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
                 }
                 else
                 {
-                    PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
+                    PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Enabled;
                 }
             }
             catch (InvalidOperationException)

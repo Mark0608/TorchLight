@@ -22,13 +22,13 @@ namespace TorchLightTest.Service.Storage
 
              _storageService = new StorageService();
 
-            _storageService.RegisterForStorageChange(Consts.BackgroundExecutionSettingsLabel, TestCallbackMethod);
+            _storageService.RegisterForStorageChange(Consts.BackgroundExecutionEnabled, TestCallbackMethod);
         }
 
         [TestMethod]
         public void RegisterForStorageChange_WhenRegisteredAndTheSettingChanges_TheCallbackFunctionWillBeCalledOnce()
         {
-            _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);
+            _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, true);
 
             Assert.AreEqual(1, _testCallbackMethodInvokedCount);
         }
@@ -36,8 +36,8 @@ namespace TorchLightTest.Service.Storage
         [TestMethod]
         public void RegisterForStorageChange_WhenUnregisteredAndTheSettingChanges_TheCallbackFunctionWillNeverBeCalled()
         {
-            _storageService.UnregisterForStorageChange(Consts.BackgroundExecutionSettingsLabel, TestCallbackMethod);
-            _storageService.StoreSetting<bool>(Consts.BackgroundExecutionSettingsLabel, true);
+            _storageService.UnregisterForStorageChange(Consts.BackgroundExecutionEnabled, TestCallbackMethod);
+            _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, true);
 
             Assert.AreEqual(0, _testCallbackMethodInvokedCount);
         }

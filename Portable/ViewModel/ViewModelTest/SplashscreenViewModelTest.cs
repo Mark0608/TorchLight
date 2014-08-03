@@ -11,7 +11,7 @@ namespace ViewModelTest
     public class SplashScreenViewModelTest
     {
         [TestMethod]
-        public async Task Init_WhenCalled_ItCallsAndAwaitsTheInitMethodOfTheLocator()
+        public void Init_WhenCalled_ItCallsAndAwaitsTheInitMethodOfTheLocator()
         {
             var storageMock = new Mock<IStorageService>();
             var flashLightServiceMock = new Mock<IFlashLightService>();

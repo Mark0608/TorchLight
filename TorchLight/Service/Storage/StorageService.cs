@@ -37,7 +37,7 @@ namespace TorchLight.Service.Storage
 
         public T LoadSetting<T>(string settingName)
         {
-	    if(!IsolatedStorageSettings.ApplicationSettings.Contains(settingName)) return default(T);
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains(settingName)) return default(T);
 
             return (T) IsolatedStorageSettings.ApplicationSettings[settingName];
         }
