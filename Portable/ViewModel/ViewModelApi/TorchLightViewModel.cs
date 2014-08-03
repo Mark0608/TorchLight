@@ -1,8 +1,10 @@
 ﻿using ApplicationInitializerApi;
 using Constants;
+using Constants.Messages;
 using FlashLightApi;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Storage;
 using System;
 
@@ -26,12 +28,15 @@ namespace ViewModelApi
             _storageService = storageService;
             _applicationInitializerService = applicationInitializerService;
 
-            IsBusy = !_flashLightService.IsInitialized;
             _flashLightService.FinishedInitialization += FlashLightServiceOnFinishedInitialization;
-
             TorchButtonPushed = new RelayCommand(ToggleFlash);
 
+            IsBusy = !_flashLightService.IsInitialized;
+
             _torchLightMode = _storageService.LoadSetting<TorchLightMode>(Consts.TorchLightModeSettingsName);
+
+            Messenger.Default.Register<AppResumedMessage>(this, message => Init());
+            Messenger.Default.Register<AppDeactivatedMessage>(this, message => _flashLightService.TurnFlashOff());
         }
 
         #region properties

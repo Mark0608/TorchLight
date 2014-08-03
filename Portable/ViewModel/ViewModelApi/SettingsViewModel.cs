@@ -1,17 +1,12 @@
 ﻿using Constants;
 using Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ViewModelApi
 {
     public class SettingsViewModel
     {
         private readonly IStorageService _storageService;
-        private bool _isSwitchedOnAfterLaunchEnabled;
 
         public SettingsViewModel(IStorageService storageService)
         {

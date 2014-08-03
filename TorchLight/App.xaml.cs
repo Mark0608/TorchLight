@@ -4,7 +4,9 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using Constants.Messages;
 using FlashLightApi;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Practices.ServiceLocation;
@@ -67,19 +69,20 @@ namespace TorchLight
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            PhoneApplicationService.Current.ApplicationIdleDetectionMode = IdleDetectionMode.Disabled;
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            Messenger.Default.Send<AppResumedMessage>(AppResumedMessage.GetInstance);
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            Messenger.Default.Send<AppDeactivatedMessage>(AppDeactivatedMessage.GetInstance);
         }
 
         // Code to execute when the application is closing (eg, user hit Back)

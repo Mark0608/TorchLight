@@ -161,4 +161,7 @@
   <data name="BackgroundExecutionMessageBoxRightButton" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="NeedToRestartApplication" xml:space="preserve">
+    <value>Please restart the application for the settings to take affect.</value>
+  </data>
 </root>

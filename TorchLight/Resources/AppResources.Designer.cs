@@ -151,6 +151,15 @@ namespace TorchLight.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please restart the application for the settings to take affect..
+        /// </summary>
+        public static string NeedToRestartApplication {
+            get {
+                return ResourceManager.GetString("NeedToRestartApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {

@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Phone.Media.Capture;
+using Constants.Messages;
 using FlashLightApi;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Shell;
 
 namespace TorchLight.Service.FlashLight.Impl
@@ -17,6 +19,16 @@ namespace TorchLight.Service.FlashLight.Impl
 
         const CameraSensorLocation SensorLocation = CameraSensorLocation.Back;
 
+        public FlashLightServiceImpl()
+        {
+            Messenger.Default.Register<AppResumedMessage>(this, message => Init());
+        }
+        #region Init 
+        public async void Init()
+        {
+            await AwaitableInit();
+        }
+
         public async Task AwaitableInit()
         {
             _avDevice = await GetCameraDevice();
@@ -28,11 +40,15 @@ namespace TorchLight.Service.FlashLight.Impl
             }
         }
 
-        public async void Init()
+        private static async Task<AudioVideoCaptureDevice> GetCameraDevice()
         {
-            await AwaitableInit();
+            var avDevice = await AudioVideoCaptureDevice.OpenAsync(SensorLocation,
+                AudioVideoCaptureDevice.GetAvailableCaptureResolutions(SensorLocation).First());
+            return avDevice;
         }
+        #endregion
 
+        #region Turn Flash On
         public void TurnFlashOn()
         {
             if (!IsFlashSupported()) return;
@@ -50,7 +66,9 @@ namespace TorchLight.Service.FlashLight.Impl
                 AudioVideoCaptureDevice.GetSupportedPropertyRange(SensorLocation,
                     KnownCameraAudioVideoProperties.VideoTorchPower).Max);
         }
-        
+        #endregion
+
+        #region Turn Flash Off
         public void TurnFlashOff()
         {
             if (!IsFlashSupported()) return;
@@ -66,6 +84,7 @@ namespace TorchLight.Service.FlashLight.Impl
         {
             _avDevice.SetProperty(KnownCameraAudioVideoProperties.VideoTorchMode, newTorchMode);
         }
+        #endregion
 
         public bool IsFlashSupported()
         {
@@ -74,13 +93,5 @@ namespace TorchLight.Service.FlashLight.Impl
             var flashSupported = supportedCameraModes.ToList().Contains((UInt32)VideoTorchMode.On);
             return flashSupported;
         }
-
-        private static async Task<AudioVideoCaptureDevice> GetCameraDevice()
-        {
-            var avDevice = await AudioVideoCaptureDevice.OpenAsync(SensorLocation,
-                AudioVideoCaptureDevice.GetAvailableCaptureResolutions(SensorLocation).First());
-            return avDevice;
-        }
-
     }
 }
