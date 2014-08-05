@@ -72,6 +72,7 @@ namespace ViewModelApi
         }
 
         public bool LightScreen { get; set; }
+        public bool IsTorchModeAvailable { get { return _storageService.LoadSetting<bool>(Consts.PhoneHasFlashLight); }}
 
         #endregion
 

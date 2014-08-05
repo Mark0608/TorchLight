@@ -11,5 +11,6 @@ namespace Constants
         public static string TorchLightModeSettingsName = "TorchLightMode";
         public const string BackgroundExecutionEnabled = "BackgroundExecution";
         public const string TurnOnTorchAfterStartup = "TurnOnTorchAfterStartup";
+        public const string PhoneHasFlashLight = "PhoneHasFlashLight";
     }
 }

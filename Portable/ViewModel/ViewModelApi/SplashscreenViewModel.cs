@@ -27,6 +27,16 @@ namespace ViewModelApi
         public async void Init()
         {
             await _flashLightService.AwaitableInit();
+            _storageService.StoreSetting<bool>(Consts.PhoneHasFlashLight, _flashLightService.IsFlashSupported());
+
+            if (!_storageService.LoadSetting<bool>(Consts.PhoneHasFlashLight))
+            {
+                _storageService.StoreSetting(Consts.TorchLightModeSettingsName, TorchLightMode.Screen);
+            }
+            else
+            {
+                _storageService.StoreSetting(Consts.TorchLightModeSettingsName, TorchLightMode.BackLight);
+            }
 
             if (!_storageService.HasSetting(Consts.TurnOnTorchAfterStartup))
             {

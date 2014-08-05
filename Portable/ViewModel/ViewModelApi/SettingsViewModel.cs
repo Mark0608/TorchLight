@@ -36,5 +36,7 @@ namespace ViewModelApi
                 _storageService.StoreSetting<bool>(Consts.TurnOnTorchAfterStartup, value);
             }
         }
+
+        public bool IsTorchModeAvailable { get { return _storageService.LoadSetting<bool>(Consts.PhoneHasFlashLight); }}
     }
 }

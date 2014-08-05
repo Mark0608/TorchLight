@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converter="clr-namespace:TorchLight.Converter"
     x:Class="TorchLight.View.SettingsPage"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -15,6 +16,9 @@
     >
     <!--shell:SystemTray.IsVisible="True"-->
 
+    <phone:PhoneApplicationPage.Resources>
+        <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
     <phone:PhoneApplicationPage.DataContext>
         <Binding Path="SettingsViewModel" Source="{StaticResource Locator}"/>
     </phone:PhoneApplicationPage.DataContext>
@@ -34,7 +38,7 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Margin="0,30,0,0">
-                <toolkit:ToggleSwitch x:Name="RunInBackgroundSetting" Header="Enable App to run in background" IsChecked="{Binding IsBackgroundExecutionEnabled, Mode=TwoWay}"/>
+                <toolkit:ToggleSwitch x:Name="RunInBackgroundSetting" Header="Enable App to run in background" IsChecked="{Binding IsBackgroundExecutionEnabled, Mode=TwoWay}" Visibility="{Binding IsTorchModeAvailable, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <toolkit:ToggleSwitch x:Name="OnAfterLaunchToggleSwitch"  Header="Automatically turn on after startup" IsChecked="{Binding IsSwitchedOnAfterLaunchEnabled, Mode=TwoWay}"/>
             </StackPanel>
         </Grid>
