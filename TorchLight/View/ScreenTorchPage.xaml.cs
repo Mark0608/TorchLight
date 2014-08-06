@@ -41,7 +41,7 @@ namespace TorchLight
             ApplicationBar = new ApplicationBar();
             ApplicationBar.Opacity = 0.5;
 
-            if (!((TorchLightViewModel) DataContext).IsTorchModeAvailable)
+            if (((TorchLightViewModel) DataContext).IsTorchModeAvailable)
             {
                 ApplicationBarIconButton changeTorchModeButton =
                     new ApplicationBarIconButton(new Uri("/Assets/Icons/switch.png", UriKind.Relative));
