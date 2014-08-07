@@ -35,9 +35,6 @@ namespace TorchLight
 
         private void BuildLocalizedApplicationBar()
         {
-
-            if (!((TorchLightViewModel)DataContext).IsTorchModeEnabled()) return;
-
             ApplicationBar = new ApplicationBar();
             ApplicationBar.Opacity = 0.5;
 
@@ -48,6 +45,10 @@ namespace TorchLight
                 changeTorchModeButton.Text = AppResources.BacklightFlashLightLabel;
                 changeTorchModeButton.Click += SwitchToFlashLightMode;
                 ApplicationBar.Buttons.Add(changeTorchModeButton);
+            }
+            else
+            {
+                ApplicationBar.Mode = ApplicationBarMode.Minimized;
             }
 
             ApplicationBarMenuItem settings = new ApplicationBarMenuItem();

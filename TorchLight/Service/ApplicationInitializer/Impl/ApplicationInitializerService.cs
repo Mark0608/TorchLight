@@ -23,20 +23,34 @@ namespace TorchLight.Service.ApplicationInitializer.Impl
 
         public void Init()
         {
-            if (!_storageService.HasSetting(Consts.BackgroundExecutionEnabled))
+            if (EnsureRunningInBackgroundSettingNeedsToBeSet()) return;
+
+            var runUnderLockscreenMessage = new CustomMessageBox
             {
-                var runUnderLockscreenMessage = new CustomMessageBox
-                {
-                    Caption = AppResources.BackgroundExecutionMessageBoxCaption,
-                    Message = AppResources.BackgroundExecutionMessageBoxMessage,
-                    LeftButtonContent = AppResources.BackgroundExecutionMessageBoxLeftButton,
-                    RightButtonContent = AppResources.BackgroundExecutionMessageBoxRightButton,
-                };
+                Caption = AppResources.BackgroundExecutionMessageBoxCaption,
+                Message = AppResources.BackgroundExecutionMessageBoxMessage,
+                LeftButtonContent = AppResources.BackgroundExecutionMessageBoxLeftButton,
+                RightButtonContent = AppResources.BackgroundExecutionMessageBoxRightButton,
+            };
 
-                runUnderLockscreenMessage.Dismissed += RunUnderLockscreenMessageOnDismissed;
+            runUnderLockscreenMessage.Dismissed += RunUnderLockscreenMessageOnDismissed;
 
-                runUnderLockscreenMessage.Show();
+            runUnderLockscreenMessage.Show();
+        }
+
+        private bool EnsureRunningInBackgroundSettingNeedsToBeSet()
+        {
+            if (_storageService.HasSetting(Consts.BackgroundExecutionEnabled)) return true;
+
+
+            if (_storageService.HasSetting(Consts.PhoneHasFlashLight) &&
+                !_storageService.LoadSetting<bool>(Consts.PhoneHasFlashLight))
+            {
+                _storageService.StoreSetting<bool>(Consts.BackgroundExecutionEnabled, false);
+                _storageService.StoreSetting<bool>(Consts.FirstStartup, false);
+                return true;
             }
+            return false;
         }
 
         private void RunUnderLockscreenMessageOnDismissed(object sender, DismissedEventArgs dismissedEventArgs)
