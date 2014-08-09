@@ -37,6 +37,11 @@ namespace TorchLight.View
             FrameworkDispatcher.Update();
         }
 
+        public ~MainPage()
+        {
+            if(_effect != null) _effect.Dispose();
+        }
+
         private void BuildLocalizedApplicationBar()
         {
             ApplicationBar = new ApplicationBar();
