@@ -26,7 +26,14 @@ namespace TorchLight.View
             const string soundFile = "Assets/Sounds/click.wav";
             Stream stream = TitleContainer.OpenStream(soundFile);
 
-            _effect = SoundEffect.FromStream(stream);
+            try
+            {
+                _effect = SoundEffect.FromStream(stream);
+            }
+            catch (InvalidOperationException)
+            {
+                // May happen and if we can ignore it and there just will be no sound
+            }
             FrameworkDispatcher.Update();
         }
 
@@ -69,6 +76,7 @@ namespace TorchLight.View
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            if (_effect == null) return;
             _effect.Play();
         }
 

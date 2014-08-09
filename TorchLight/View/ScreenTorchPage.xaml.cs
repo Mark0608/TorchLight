@@ -3,11 +3,7 @@ using Constants;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -29,7 +25,14 @@ namespace TorchLight
             const string soundFile = "Assets/Sounds/click.wav";
             Stream stream = TitleContainer.OpenStream(soundFile);
 
-            _effect = SoundEffect.FromStream(stream);
+            try
+            {
+                _effect = SoundEffect.FromStream(stream);
+            }
+            catch (InvalidOperationException)
+            {
+                // May happen and if we can ignore it and there just will be no sound
+            }
             FrameworkDispatcher.Update();
         }
 
@@ -79,6 +82,7 @@ namespace TorchLight
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (_effect == null) return;
             _effect.Play();
         }
 
