@@ -36,7 +36,7 @@ namespace TorchLight
             FrameworkDispatcher.Update();
         }
 
-        public ~ScreenTorchPage()
+        ~ScreenTorchPage()
         {
             if(_effect != null) _effect.Dispose();
         }

@@ -37,7 +37,7 @@ namespace TorchLight.View
             FrameworkDispatcher.Update();
         }
 
-        public ~MainPage()
+        ~MainPage()
         {
             if(_effect != null) _effect.Dispose();
         }
