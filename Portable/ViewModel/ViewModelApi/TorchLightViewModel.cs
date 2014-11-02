@@ -81,12 +81,14 @@ namespace ViewModelApi
             return _flashLightService.IsFlashSupported();
         }
 
-        public void Init()
+        public async void Init()
         {
             if (!_storageService.HasSetting(Consts.FirstStartup))
             {
                 _applicationInitializerService.Init();
             }
+
+            await _flashLightService.AwaitableInit();
 
             if (_storageService.LoadSetting<bool>(Consts.TurnOnTorchAfterStartup) && _isFirstInit)
             {

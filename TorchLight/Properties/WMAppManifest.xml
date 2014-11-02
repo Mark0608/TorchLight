@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="en" />
   </Languages>
-  <App xmlns="" ProductID="{2339e7a8-7b8a-43dd-a9e8-1d0b1abce959}" Title="Torchlight" RuntimeType="Silverlight" Version="1.0.3.0" Genre="apps.normal" Author="TorchLight author" Description="The perfect companion in the dark with an intuitive design." Publisher="TorchLight" PublisherID="{57a0927e-3efd-470c-ba15-7fe5ee29e125}">
+  <App xmlns="" ProductID="{2339e7a8-7b8a-43dd-a9e8-1d0b1abce959}" Title="Torchlight" RuntimeType="Silverlight" Version="1.0.4.0" Genre="apps.normal" Author="TorchLight author" Description="The perfect companion in the dark with an intuitive design." Publisher="TorchLight" PublisherID="{57a0927e-3efd-470c-ba15-7fe5ee29e125}">
     <IconPath IsRelative="true" IsResource="false">Assets\Tiles\TorchLightMedium.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

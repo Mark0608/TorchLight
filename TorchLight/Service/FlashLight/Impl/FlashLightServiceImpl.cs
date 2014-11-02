@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Phone.Media.Capture;
 using Constants.Messages;
@@ -21,13 +22,13 @@ namespace TorchLight.Service.FlashLight.Impl
 
         public FlashLightServiceImpl()
         {
-            Messenger.Default.Register<AppResumedMessage>(this, message => Init());
+            //Messenger.Default.Register<AppResumedMessage>(this, message => Init());
             Messenger.Default.Register<AppDeactivatedMessage>(this, message => CleanUp());
         }
 
         private void CleanUp()
         {
-            _avDevice.Dispose();
+            IsInitialized = false;
         }
 
         #region Init 
@@ -38,6 +39,8 @@ namespace TorchLight.Service.FlashLight.Impl
 
         public async Task AwaitableInit()
         {
+            if (IsInitialized) return;
+
             _avDevice = await GetCameraDevice();
             IsInitialized = true;
 
