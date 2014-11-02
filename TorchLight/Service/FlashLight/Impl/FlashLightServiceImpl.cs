@@ -22,7 +22,14 @@ namespace TorchLight.Service.FlashLight.Impl
         public FlashLightServiceImpl()
         {
             Messenger.Default.Register<AppResumedMessage>(this, message => Init());
+            Messenger.Default.Register<AppDeactivatedMessage>(this, message => CleanUp());
         }
+
+        private void CleanUp()
+        {
+            _avDevice.Dispose();
+        }
+
         #region Init 
         public async void Init()
         {

@@ -24,8 +24,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\TorchLightSmall.png</SmallImageURI>
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\TorchLightMedium.png</IconImageURI>
-          <Title>
-          </Title>
+          <Title>Torchlight</Title>
           <Message>
           </Message>
           <BackgroundColor>
